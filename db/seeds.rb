@@ -7,6 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-100.times do
-  Post.create(title: Faker::Book.title, body: Faker::Lorem.paragraph)
+50.times do
+  user = User.create(email: Faker::Internet.email, password: Faker::Internet.password(min_length: 8))
+  100.times do
+    user.posts.create(title: Faker::Book.title, body: Faker::Lorem.paragraph)
+  end
 end
